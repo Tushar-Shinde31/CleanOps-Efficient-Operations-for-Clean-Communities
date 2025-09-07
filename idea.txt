@@ -1,0 +1,182 @@
+Project Name: Waste Management & Desludging Request System
+👥 Citizen Side (User-Facing Portal)
+Feature No.
+Feature Title
+Feature Description
+Feature / Concept
+Covered in Previous Work?
+Should We Keep It?
+Why Keep It / Why Not?
+1
+📋 Raise Desludging Request
+Users can raise a request via a form with fields like: Full Name, Mobile Number, Ward, Location (map & address), Type of Waste (sewage, household, industrial), Preferred Time Slot, Description, and an option to attach photos.
+JSX & Form Handling
+✔️ Yes
+✔️ Yes
+Core concept already learned and crucial for request creation
+1
+📋 Raise Desludging Request
+
+
+API Integration (POST)
+❌ No
+✔️ Yes 
+Used earlier but this case is more detailed
+1
+📋 Raise Desludging Request
+
+
+Controlled Components + Validation
+✔️ Yes
+✔️ Yes
+Ensures only valid requests are submitted
+2
+📱 Real-Time Service Tracking
+Users can track the status of their desludging request (e.g., "Scheduled", "On the Way", "Service in Progress", "Completed") 
+API Integration (GET)
+❌ No
+✔️ Yes
+Essential for real-time data fetching
+2
+📱 Real-Time Service Tracking
+
+
+useEffect for updates
+✔️ Yes
+✔️ Yes
+Needed to poll or fetch request status
+
+
+3
+🗂️ My Requests Dashboard
+A logged-in user can view the history of all their service requests, including current status, technician assigned (if any), and service summary after completion.
+useContext for Auth
+✔️ Yes
+✔️ Yes
+Needed to load user-specific data
+3
+🗂️ My Requests Dashboard
+
+
+Conditional Rendering
+✔️ Yes
+✔️ Yes
+Show different UI for logged in vs not
+
+
+
+5
+📢 Community Projects Section
+Citizens can initiate or join neighborhood waste drives and see status updates on group requests (e.g., a community tank desludging).
+Component Reuse
+✔️ Yes
+✔️ Yes
+Displaying group data like requests; helps with DRY code
+6
+📨 Feedback & Rating
+After service completion, citizens can provide a rating and write optional feedback about the service and operator.
+Feedback Form with State Handling
+✔️ Yes
+✔️ Yes
+Used in earlier projects — reinforces concept
+
+🧑‍💼 Admin Panel (System Actors / Municipal Employees)
+Feature No.
+Feature Title
+Feature Description
+Feature / Concept
+Covered in Previous Work?
+Should We Keep It?
+Why Keep It / Why Not?
+1
+📃 View Incoming Requests
+Admins can view a sortable table of all incoming desludging requests, including filters for Ward, Status, Date, and Waste Type.
+Data Table + Filtering
+✔️ Yes
+✔️ Yes
+Already practiced using table views with filters.
+2
+📤 Assign to Operator
+Assign each request to a field technician/operator based on location, availability, and type of service required
+Dropdown & Conditional Logic
+✔️ Yes
+✔️ Yes
+Covered in form logic; reinforces conditional rendering.
+3
+🛠️ Status Management
+Update status of service in real-time — options include: "Open", "Assigned", "In Progress", "Completed", "Rejected"
+Dynamic UI + useState/useEffect
+✔️ Yes
+✔️ Yes
+Already practiced — essential for tracking lifecycle.
+4
+📝 Add Notes & Resolutions
+For each request, the admin can add internal notes, service photos, and resolution reports.
+Form Handling + File Upload
+✔️ Partial
+✔️ Yes
+Enhances full-cycle support. Useful for backend integration practice.
+5
+📦 Service Summary View
+View full chain-of-events for each ticket: when it was created, updated, who handled it, and final feedback..
+useEffect + Conditional Rendering
+✔️ Yes
+✔️ Yes
+Covered via previous timeline/status features.
+
+9
+🔒 Role-Based Access
+Admins can be Super Admins (all permissions) or Ward-Level Admins (restricted to their zone only).
+Role-Based UI + Auth Logic
+❌ No
+✔️ Yes
+Important for multi-user apps — real-world learning.
+
+⚙️ System Behavior (Global System Features)
+Feature No.
+Feature Title
+Feature Description
+Feature / Concept
+Covered in Previous Work?
+Should We Keep It?
+Why Keep It / Why Not?
+1
+🔐 Secure Authentication
+JWT-based login/signup for both citizens and system actors.
+JWT Auth Flow
+❌ No
+✔️ Yes
+Realistic security — introduces protected routes.
+2
+🆔 Auto-Generated Ticket ID
+Every request gets a unique, trackable ID (e.g., REQ-2025-000123)
+ID Generation + DB Storage
+❌ No
+✔️ Yes
+Teaches backend auto-generation and tracking.
+3
+🕐 Time Stamps
+All actions (created, assigned, updated, completed) are saved with a full date-time stamp.
+JS Date Handling + DB Integration
+✔️ Yes
+✔️ Yes
+Easy to integrate, helpful for logs.
+
+7
+📉 Analytics API
+Provide endpoints for charts on categories like "Requests per Ward", "Average SLA Breach", "Most Active Operators".
+Charts API (e.g., Recharts)
+❌ No
+✔️ Yes
+Covered with dashboards — keeps admin UI meaningful.
+8
+📦 Central Registry
+All data (requests, users, operators, trucks) are stored in a centralized MongoDB collection with indexing for performance.
+Centralized State / MongoDB
+✔️ Yes
+(via Context)
+✔️ Yes
+Can keep simple with Context, advanced teams can add DB indexing later.
+
+
+

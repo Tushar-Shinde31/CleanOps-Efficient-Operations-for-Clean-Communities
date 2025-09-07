@@ -25,4 +25,10 @@ router.post('/:id/notes', protect, allowRoles('operator','wardAdmin','superAdmin
 // feedback (citizen)
 router.post('/:id/feedback', protect, allowRoles('citizen'), requestCtrl.addFeedback);
 
+// citizen stats
+router.get('/my/stats', protect, allowRoles('citizen'), requestCtrl.getMyStats);
+
+// operator assigned requests
+router.get('/my/assigned', protect, allowRoles('operator'), requestCtrl.getMyAssignedRequests);
+
 module.exports = router;

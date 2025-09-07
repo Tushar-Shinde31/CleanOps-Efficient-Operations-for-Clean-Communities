@@ -173,3 +173,64 @@ exports.addFeedback = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+// Get request statistics for citizen
+exports.getMyStats = async (req, res) => {
+  try {
+    if (!req.user || req.user.role !== 'citizen') {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
+    const userId = req.user._id;
+    
+    const totalRequests = await Request.countDocuments({ citizen: userId });
+    const completedRequests = await Request.countDocuments({ citizen: userId, status: 'Completed' });
+    const pendingRequests = await Request.countDocuments({ 
+      citizen: userId, 
+      status: { $in: ['Open', 'Assigned', 'On the Way', 'In Progress'] } 
+    });
+    const rejectedRequests = await Request.countDocuments({ citizen: userId, status: 'Rejected' });
+
+    // Average rating received
+    const avgRating = await Request.aggregate([
+      { $match: { citizen: userId, 'feedback.rating': { $exists: true } } },
+      { $group: { _id: null, avgRating: { $avg: '$feedback.rating' } } }
+    ]);
+
+    res.json({
+      totalRequests,
+      completedRequests,
+      pendingRequests,
+      rejectedRequests,
+      avgRating: avgRating[0]?.avgRating || 0
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// Get operator's assigned requests
+exports.getMyAssignedRequests = async (req, res) => {
+  try {
+    if (!req.user || req.user.role !== 'operator') {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
+    const { page = 1, limit = 20, status } = req.query;
+    const skip = (page - 1) * limit;
+    const filter = { assignedOperator: req.user._id };
+
+    if (status) filter.status = status;
+
+    const total = await Request.countDocuments(filter);
+    const data = await Request.find(filter)
+      .populate('citizen', 'name email phone')
+      .sort({ createdAt: -1 })
+      .skip(parseInt(skip))
+      .limit(parseInt(limit));
+
+    res.json({ total, page: parseInt(page), limit: parseInt(limit), data });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
