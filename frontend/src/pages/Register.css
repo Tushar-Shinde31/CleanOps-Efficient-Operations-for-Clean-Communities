@@ -1,0 +1,4 @@
+.auth-page { max-width: 560px; margin: 24px auto; text-align:left; }
+.auth-card { box-shadow: 0 8px 20px rgba(0,0,0,0.04); }
+.auth-card h2 { margin-top: 0; margin-bottom: 12px; }
+

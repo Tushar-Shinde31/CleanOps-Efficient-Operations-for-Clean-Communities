@@ -1,0 +1,4 @@
+.community-list { text-align:left; }
+.header { display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px; }
+.list { margin:0; padding-left:18px; }
+

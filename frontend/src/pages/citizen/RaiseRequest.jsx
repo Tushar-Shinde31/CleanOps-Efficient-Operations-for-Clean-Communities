@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import api from '../../services/api';
+import './RaiseRequest.css';
 
 export default function RaiseRequest() {
   const [form, setForm] = useState({
@@ -41,10 +42,10 @@ export default function RaiseRequest() {
   };
 
   return (
-    <div style={{ maxWidth: 720, margin: '0 auto' }}>
+    <div className="raise-request">
       <h2>Raise Desludging Request</h2>
-      {msg && <div style={{ color: 'green', marginBottom: 10 }}>{msg}</div>}
-      {error && <div style={{ color: 'red', marginBottom: 10 }}>{error}</div>}
+      {msg && <div className="alert success">{msg}</div>}
+      {error && <div className="alert error">{error}</div>}
       <form className="form" onSubmit={onSubmit}>
         <div className="grid-2">
           <div>
@@ -88,8 +89,8 @@ export default function RaiseRequest() {
         <label>Description</label>
         <textarea name="description" value={form.description} onChange={onChange} />
         <label>Photos</label>
-        <input type="file" multiple onChange={(e) => setPhotos([...e.target.files])} />
-        <button disabled={loading} type="submit">{loading ? 'Submitting...' : 'Submit'}</button>
+        <input className="file-input" type="file" multiple onChange={(e) => setPhotos([...e.target.files])} />
+        <button className="btn primary" disabled={loading} type="submit">{loading ? 'Submitting...' : 'Submit'}</button>
       </form>
     </div>
   );

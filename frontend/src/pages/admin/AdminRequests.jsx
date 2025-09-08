@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
+import './AdminRequests.css';
 
 export default function AdminRequests() {
   const [items, setItems] = useState([]);
@@ -20,21 +21,21 @@ export default function AdminRequests() {
   };
 
   return (
-    <div>
+    <div className="admin-requests">
       <h2>Admin - Incoming Requests</h2>
-      <div className="grid-3">
-        <div>
+      <div className="filters grid-3">
+        <div className="field">
           <label>Ward</label>
           <input value={filters.ward} onChange={(e) => setFilters({ ...filters, ward: e.target.value })} />
         </div>
-        <div>
+        <div className="field">
           <label>Status</label>
           <select value={filters.status} onChange={(e) => setFilters({ ...filters, status: e.target.value })}>
             <option value="">All</option>
             {['Open','Assigned','On the Way','In Progress','Completed','Rejected'].map(s => <option key={s} value={s}>{s}</option>)}
           </select>
         </div>
-        <div>
+        <div className="field">
           <label>Waste Type</label>
           <select value={filters.wasteType} onChange={(e) => setFilters({ ...filters, wasteType: e.target.value })}>
             <option value="">All</option>
@@ -43,7 +44,7 @@ export default function AdminRequests() {
         </div>
       </div>
 
-      <table className="table">
+      <table className="table striped hover">
         <thead>
           <tr>
             <th>Ticket</th>
