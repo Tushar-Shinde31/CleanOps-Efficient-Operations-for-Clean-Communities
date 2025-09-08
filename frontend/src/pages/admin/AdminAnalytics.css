@@ -1,0 +1,11 @@
+.admin-analytics { text-align:left; }
+.admin-analytics h2 { margin: 0 0 14px; }
+.panel { border:1px solid #e5e7eb; background:#fff; border-radius:8px; padding:14px; margin-bottom:12px; }
+.panel h4 { margin:0 0 10px; }
+.list { margin:0; padding-left:18px; }
+.stat { display:flex; flex-direction:column; gap:6px; }
+.stat .label { color:#667085; font-size: 0.95rem; }
+.stat .value { font-size:1.3rem; font-weight:700; }
+.danger { border-left: 4px solid #ef4444; }
+.loading { padding:16px; color:#667085; }
+

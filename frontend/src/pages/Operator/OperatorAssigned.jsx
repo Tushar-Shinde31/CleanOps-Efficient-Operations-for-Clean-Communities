@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
+import './OperatorAssigned.css';
 
 export default function OperatorAssigned() {
   const [items, setItems] = useState([]);
@@ -18,16 +19,16 @@ export default function OperatorAssigned() {
   };
 
   return (
-    <div>
+    <div className="operator-assigned">
       <h2>Assigned Requests</h2>
-      <div>
+      <div className="filters">
         <label>Filter Status</label>
         <select value={status} onChange={(e) => setStatus(e.target.value)}>
           <option value="">All</option>
           {['Assigned','On the Way','In Progress','Completed','Rejected'].map(s => <option key={s} value={s}>{s}</option>)}
         </select>
       </div>
-      <table className="table">
+      <table className="table striped hover">
         <thead>
           <tr>
             <th>Ticket</th>
@@ -44,7 +45,7 @@ export default function OperatorAssigned() {
               <td>{r.status}</td>
               <td>
                 {['On the Way','In Progress','Completed','Rejected'].map(s => (
-                  <button key={s} onClick={() => updateStatus(r._id, s)} style={{ marginRight: 6 }}>{s}</button>
+                  <button className="btn small" key={s} onClick={() => updateStatus(r._id, s)}>{s}</button>
                 ))}
               </td>
             </tr>

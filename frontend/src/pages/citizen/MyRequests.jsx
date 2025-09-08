@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
+import './MyRequests.css';
 
 export default function MyRequests() {
   const [items, setItems] = useState([]);
@@ -19,12 +20,12 @@ export default function MyRequests() {
     })();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="loading">Loading...</div>;
 
   return (
-    <div>
+    <div className="my-requests">
       <h2>My Requests</h2>
-      <table className="table">
+      <table className="table striped hover">
         <thead>
           <tr>
             <th>Ticket</th>

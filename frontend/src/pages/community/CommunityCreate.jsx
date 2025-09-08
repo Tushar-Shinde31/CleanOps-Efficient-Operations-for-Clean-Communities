@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import api from '../../services/api';
+import './CommunityCreate.css';
 
 export default function CommunityCreate() {
   const [form, setForm] = useState({ title:'', description:'', ward:'', address:'', lat:'', lng:'', wasteType:'household', targetDate:'' });
@@ -25,10 +26,10 @@ export default function CommunityCreate() {
   };
 
   return (
-    <div style={{ maxWidth: 720, margin: '0 auto' }}>
+    <div className="community-create">
       <h2>Create Community Project</h2>
-      {msg && <div style={{ color: 'green', marginBottom: 10 }}>{msg}</div>}
-      {error && <div style={{ color: 'red', marginBottom: 10 }}>{error}</div>}
+      {msg && <div className="alert success">{msg}</div>}
+      {error && <div className="alert error">{error}</div>}
       <form className="form" onSubmit={onSubmit}>
         <label>Title</label>
         <input name="title" value={form.title} onChange={onChange} required />
@@ -66,8 +67,8 @@ export default function CommunityCreate() {
           </div>
         </div>
         <label>Photos</label>
-        <input type="file" multiple onChange={(e) => setPhotos([...e.target.files])} />
-        <button type="submit">Create</button>
+        <input className="file-input" type="file" multiple onChange={(e) => setPhotos([...e.target.files])} />
+        <button className="btn primary" type="submit">Create</button>
       </form>
     </div>
   );

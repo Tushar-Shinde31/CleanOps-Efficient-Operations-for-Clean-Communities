@@ -1,0 +1,5 @@
+.community-details { text-align:left; }
+.description { color:#475467; }
+.note-box { margin-top: 12px; display:flex; gap:8px; flex-direction:column; }
+.list { margin:0; padding-left:18px; }
+

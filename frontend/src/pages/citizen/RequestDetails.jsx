@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
+import './RequestDetails.css';
 
 export default function RequestDetails() {
   const { id } = useParams();
@@ -25,25 +26,27 @@ export default function RequestDetails() {
     }
   };
 
-  if (!reqItem) return <div>Loading...</div>;
+  if (!reqItem) return <div className="loading">Loading...</div>;
 
   return (
-    <div>
+    <div className="request-details">
       <h2>Request {reqItem.ticketId}</h2>
-      <p>Status: {reqItem.status}</p>
-      <p>Ward: {reqItem.ward}</p>
-      <p>Waste Type: {reqItem.wasteType}</p>
+      <div className="meta">
+        <span className="chip">Status: {reqItem.status}</span>
+        <span className="chip">Ward: {reqItem.ward}</span>
+        <span className="chip">Waste Type: {reqItem.wasteType}</span>
+      </div>
       <h4>Notes</h4>
-      <ul>
+      <ul className="list">
         {(reqItem.notes || []).map((n, idx) => (
-          <li key={idx}>{n.text} - {new Date(n.createdAt).toLocaleString()}</li>
+          <li key={idx}><span className="note-text">{n.text}</span> <span className="note-date">{new Date(n.createdAt).toLocaleString()}</span></li>
         ))}
       </ul>
 
       {reqItem.status === 'Completed' && (
-        <div style={{ marginTop: 16 }}>
+        <div className="feedback">
           <h4>Give Feedback</h4>
-          {msg && <div style={{ color: 'green' }}>{msg}</div>}
+          {msg && <div className="alert success">{msg}</div>}
           <div>
             <label>Rating</label>
             <select value={rating} onChange={(e) => setRating(Number(e.target.value))}>
@@ -54,7 +57,7 @@ export default function RequestDetails() {
             <label>Comment</label>
             <textarea value={comment} onChange={(e) => setComment(e.target.value)} />
           </div>
-          <button onClick={giveFeedback}>Submit</button>
+          <button className="btn" onClick={giveFeedback}>Submit</button>
         </div>
       )}
     </div>
