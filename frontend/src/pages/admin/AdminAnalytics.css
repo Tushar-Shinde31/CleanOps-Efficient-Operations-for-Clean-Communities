@@ -1,6 +1,7 @@
 .admin-analytics { text-align:left; }
 .admin-analytics h2 { margin: 0 0 14px; }
-.panel { border:1px solid #e5e7eb; background:#fff; border-radius:8px; padding:14px; margin-bottom:12px; }
+.panel { border:1px solid var(--color-border); background:#fff; border-radius:12px; padding:16px; margin-bottom:12px; box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition); }
+.panel:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .panel h4 { margin:0 0 10px; }
 .list { margin:0; padding-left:18px; }
 .stat { display:flex; flex-direction:column; gap:6px; }

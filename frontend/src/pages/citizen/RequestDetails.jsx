@@ -49,9 +49,11 @@ export default function RequestDetails() {
           {msg && <div className="alert success">{msg}</div>}
           <div>
             <label>Rating</label>
-            <select value={rating} onChange={(e) => setRating(Number(e.target.value))}>
-              {[1,2,3,4,5].map(r => <option key={r} value={r}>{r}</option>)}
-            </select>
+            <div className="rating" role="radiogroup" aria-label="Rating">
+              {[1,2,3,4,5].map((r) => (
+                <span key={r} className={`star ${r <= rating ? 'active' : ''}`} onClick={() => setRating(r)} role="radio" aria-checked={r === rating} tabIndex={0} onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setRating(r)} />
+              ))}
+            </div>
           </div>
           <div>
             <label>Comment</label>

@@ -24,8 +24,18 @@ export default function MyRequests() {
 
   return (
     <div className="my-requests">
-      <h2>My Requests</h2>
-      <table className="table striped hover">
+      <div className="header">
+        <h2>My Requests</h2>
+        <Link className="btn primary" to="/raise-request">Raise Request</Link>
+      </div>
+      {items.length === 0 ? (
+        <div className="empty-state card">
+          <h4>No requests yet</h4>
+          <p>Create your first desludging request to get started.</p>
+          <Link className="btn" to="/raise-request">Create Request</Link>
+        </div>
+      ) : (
+      <table className="table striped hover requests-table">
         <thead>
           <tr>
             <th>Ticket</th>
@@ -41,7 +51,7 @@ export default function MyRequests() {
               <td>{r.ticketId}</td>
               <td>{r.ward}</td>
               <td>{r.wasteType}</td>
-              <td>{r.status}</td>
+              <td><span className={`badge ${String(r.status).toLowerCase().replace(/\s/g,'-')}`}>{r.status}</span></td>
               <td>
                 <Link to={`/requests/${r._id}`}>View</Link>
               </td>
@@ -49,6 +59,7 @@ export default function MyRequests() {
           ))}
         </tbody>
       </table>
+      )}
     </div>
   );
 }

@@ -1,10 +1,19 @@
 .admin-dashboard { text-align:left; }
 .admin-dashboard h2 { margin: 0 0 14px; }
-.stat { display:flex; flex-direction:column; gap:6px; }
+.stats-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; }
+.stat { display:flex; flex-direction:column; gap:6px; padding:16px; border:1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition); }
+.stat:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .stat .label { color:#667085; font-size: 0.95rem; }
 .stat .value { font-size:1.6rem; font-weight:700; }
 .stat.success { border-left: 4px solid #22c55e; }
 .stat.warning { border-left: 4px solid #f59e0b; }
 .stat.danger { border-left: 4px solid #ef4444; }
 .loading { padding:16px; color:#667085; }
+
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .stats-grid { grid-template-columns: 1fr; }
+}
 

@@ -1,4 +1,7 @@
 .operator-assigned { text-align:left; }
-.filters { margin-bottom: 10px; }
+.filters { margin-bottom: 12px; display:flex; gap:10px; flex-wrap:wrap; }
 .btn.small { margin-right: 6px; }
+
+.assignments { border:1px solid var(--color-border); border-radius: 12px; background:#fff; box-shadow: var(--shadow-sm); overflow:hidden; transition: transform var(--transition), box-shadow var(--transition); }
+.assignments:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 

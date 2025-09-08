@@ -44,7 +44,7 @@ export default function AdminRequests() {
         </div>
       </div>
 
-      <table className="table striped hover">
+      <table className="table striped hover requests-table">
         <thead>
           <tr>
             <th>Ticket</th>
@@ -60,7 +60,7 @@ export default function AdminRequests() {
               <td>{r.ticketId}</td>
               <td>{r.ward}</td>
               <td>{r.wasteType}</td>
-              <td>{r.status}</td>
+              <td><span className={`badge ${String(r.status).toLowerCase().replace(/\s/g,'-')}`}>{r.status}</span></td>
               <td>
                 <select onChange={(e) => assign(r._id, e.target.value)} defaultValue="">
                   <option value="" disabled>Choose operator</option>

@@ -28,7 +28,7 @@ export default function OperatorAssigned() {
           {['Assigned','On the Way','In Progress','Completed','Rejected'].map(s => <option key={s} value={s}>{s}</option>)}
         </select>
       </div>
-      <table className="table striped hover">
+      <table className="table striped hover assignments">
         <thead>
           <tr>
             <th>Ticket</th>
@@ -42,7 +42,7 @@ export default function OperatorAssigned() {
             <tr key={r._id}>
               <td>{r.ticketId}</td>
               <td>{r.ward}</td>
-              <td>{r.status}</td>
+              <td><span className={`badge ${String(r.status).toLowerCase().replace(/\s/g,'-')}`}>{r.status}</span></td>
               <td>
                 {['On the Way','In Progress','Completed','Rejected'].map(s => (
                   <button className="btn small" key={s} onClick={() => updateStatus(r._id, s)}>{s}</button>

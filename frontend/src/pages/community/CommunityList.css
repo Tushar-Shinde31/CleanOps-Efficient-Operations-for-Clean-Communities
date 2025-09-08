@@ -2,3 +2,11 @@
 .header { display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px; }
 .list { margin:0; padding-left:18px; }
 
+.grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
+.community-list .card { padding:16px; border:1px solid var(--color-border); border-radius: 12px; background: var(--color-surface); box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition); }
+.community-list .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.community-list .meta { margin-top:8px; }
+
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+

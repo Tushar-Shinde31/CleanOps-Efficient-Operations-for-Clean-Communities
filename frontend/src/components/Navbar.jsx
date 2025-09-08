@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
@@ -9,21 +9,21 @@ export default function Navbar() {
     <nav className="nav">
       <div className="brand">Waste Management</div>
       <div className="links">
-        <Link to="/">Home</Link>
-        <Link to="/community">Community</Link>
+        <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
+        <NavLink to="/community" className={({ isActive }) => isActive ? 'active' : ''}>Community</NavLink>
         {user?.role === 'citizen' && (
           <>
-            <Link to="/raise-request">Raise Request</Link>
-            <Link to="/my-requests">My Requests</Link>
+            <NavLink to="/raise-request" className={({ isActive }) => isActive ? 'active' : ''}>Raise Request</NavLink>
+            <NavLink to="/my-requests" className={({ isActive }) => isActive ? 'active' : ''}>My Requests</NavLink>
           </>
         )}
-        {user?.role === 'operator' && <Link to="/operator/assigned">Assigned</Link>}
+        {user?.role === 'operator' && <NavLink to="/operator/assigned" className={({ isActive }) => isActive ? 'active' : ''}>Assigned</NavLink>}
         {(user?.role === 'wardAdmin' || user?.role === 'superAdmin') && (
           <>
-            <Link to="/admin/requests">Admin Requests</Link>
-            <Link to="/admin/dashboard">Dashboard</Link>
-            <Link to="/admin/analytics">Analytics</Link>
-            <Link to="/admin/operators">Operators</Link>
+            <NavLink to="/admin/requests" className={({ isActive }) => isActive ? 'active' : ''}>Admin Requests</NavLink>
+            <NavLink to="/admin/dashboard" className={({ isActive }) => isActive ? 'active' : ''}>Dashboard</NavLink>
+            <NavLink to="/admin/analytics" className={({ isActive }) => isActive ? 'active' : ''}>Analytics</NavLink>
+            <NavLink to="/admin/operators" className={({ isActive }) => isActive ? 'active' : ''}>Operators</NavLink>
           </>
         )}
       </div>
