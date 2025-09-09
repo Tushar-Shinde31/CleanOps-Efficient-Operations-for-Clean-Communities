@@ -20,7 +20,7 @@ export default function Navbar() {
         {user?.role === 'operator' && <NavLink to="/operator/assigned" className={({ isActive }) => isActive ? 'active' : ''}>Assigned</NavLink>}
         {(user?.role === 'wardAdmin' || user?.role === 'superAdmin') && (
           <>
-            <NavLink to="/admin/requests" className={({ isActive }) => isActive ? 'active' : ''}>Admin Requests</NavLink>
+            {/* <NavLink to="/admin/requests" className={({ isActive }) => isActive ? 'active' : ''}>Admin Requests</NavLink> */}
             <NavLink to="/admin/dashboard" className={({ isActive }) => isActive ? 'active' : ''}>Dashboard</NavLink>
             <NavLink to="/admin/analytics" className={({ isActive }) => isActive ? 'active' : ''}>Analytics</NavLink>
             <NavLink to="/admin/operators" className={({ isActive }) => isActive ? 'active' : ''}>Operators</NavLink>
