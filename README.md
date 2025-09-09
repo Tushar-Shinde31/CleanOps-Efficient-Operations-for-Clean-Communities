@@ -43,3 +43,57 @@ It enables **citizens** to raise service requests, track desludging progress, an
 - **Tools:** Thunder Client / Postman for API testing  
 
 ---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/your-username/CleanOps.git
+cd CleanOps
+
+```
+
+### 2️⃣ Setup Backend
+```bash
+cd backend
+npm install
+npm start
+```
+Backend will run at http://localhost:5000
+
+3️⃣ Setup Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+🔑 User Roles
+
+👤 Citizen → Raise & track requests, join community projects.
+
+🛠️ Operator → Handle assigned requests, update progress.
+
+🏛️ Admin → Manage operators, requests, wards, and oversee analytics.
+
+⭐ Super Admin → System-level controls.
+
+---
+
+🎯 Future Enhancements
+
+📍 Google Maps integration for live location.
+
+🔔 Email / SMS notifications.
+
+📊 Advanced analytics dashboard for admins.
+
+🌐 Multi-language support.
+
+---
+
+🤝 Contributing
+
+Contributions are welcome!
+Fork the repo, create a new branch, commit your changes, and open a pull request.
+
