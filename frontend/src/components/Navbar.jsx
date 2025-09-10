@@ -7,7 +7,7 @@ export default function Navbar() {
 
   return (
     <nav className="nav">
-      <div className="brand">Waste Management</div>
+      <div className="brand">CleanOps 🚛♻️</div>
       <div className="links">
         <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
         <NavLink to="/community" className={({ isActive }) => isActive ? 'active' : ''}>Community</NavLink>
