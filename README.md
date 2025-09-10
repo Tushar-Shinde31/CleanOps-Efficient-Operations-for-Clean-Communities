@@ -7,6 +7,8 @@
 **CleanOps** is a Waste Management & Desludging Request System built with the **MERN stack**.  
 It enables **citizens** to raise service requests, track desludging progress, and join community waste projects, while **admins** and **operators** manage assignments, monitor operations, and ensure efficient waste management.  
 
+![CleanOps Banner](<img width="1536" height="1024" alt="c7ac67c8-873a-4e95-b43d-e0e5a9939672" src="https://github.com/user-attachments/assets/ad2b0f62-192b-4bcf-9494-67aa194003d7" />
+)
 ---
 
 ## ✨ Features
