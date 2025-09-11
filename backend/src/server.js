@@ -42,15 +42,14 @@ app.use('/api/requests', requestRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/community', communityRoutes);
 
-app.get('/', (req, res) => res.send('Waste Management API'));
+// Serve frontend build
+app.use(express.static(path.join(_dirname, "frontend", "dist")));
+app.get('*', (_, res) => {
+  res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
+});
 
 // Error handler
 app.use(errorHandler);
-
-app.use(express.static(path.join(_dirname, "frontend/dist")));
-app.get("/*splat", (_, res) => {
-  res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
-});
 
 // Start server
 const server = app.listen(PORT, () => {
