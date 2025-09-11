@@ -28,7 +28,11 @@ const app = express();
 const _dirname = path.resolve();
 
 app.use(helmet());
-app.use(cors());
+const corsOptions = {
+  origin: 'https://cleanops-efficient-operations-for-clean.onrender.com',
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.) to be sent
+}
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
