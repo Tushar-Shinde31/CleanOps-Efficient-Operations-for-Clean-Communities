@@ -6,6 +6,7 @@ export default function Home() {
   const { user } = useAuth();
   const isAdmin = user?.role === 'wardAdmin' || user?.role === 'superAdmin';
   const isCitizen = user?.role === 'citizen';
+  
   return (
     <div className="home-page">
       <div className="hero simple">
