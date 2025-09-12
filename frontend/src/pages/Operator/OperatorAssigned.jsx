@@ -6,13 +6,16 @@ export default function OperatorAssigned() {
   const [items, setItems] = useState([]);
   const [status, setStatus] = useState('');
 
+  // Fetch assigned requests from API, filtered by status
   const load = async () => {
     const { data } = await api.get(`/requests/my/assigned`, { params: { status } });
     setItems(data.data || []);
   };
 
+  // Reload requests when status filter changes
   useEffect(() => { load(); }, [status]);
 
+  // Update the status of a specific request
   const updateStatus = async (id, newStatus) => {
     await api.put(`/requests/${id}/status`, { status: newStatus });
     await load();
