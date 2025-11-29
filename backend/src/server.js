@@ -29,7 +29,14 @@ const _dirname = path.resolve();
 
 app.use(helmet());
 const corsOptions = {
-  origin: 'https://cleanops-efficient-operations-for-clean.onrender.com',
+  origin: [
+    "http://localhost:5173",   // Vite
+    "http://localhost:5174",
+    "http://localhost:3000",   // CRA or fallback
+    "http://localhost:4173",   // Vite preview
+    'https://cleanops-efficient-operations-for-clean.onrender.com'
+  ],
+  methods: ["GET", "POST", "PATCH", "DELETE"],
   credentials: true, // Allow credentials (cookies, authorization headers, etc.) to be sent
 }
 app.use(cors(corsOptions));
